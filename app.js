@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var expressSession = require("express-session")
+const MemoryStore = require('memorystore')(expressSession)
 
 var passport = require("passport")
 
@@ -20,9 +21,12 @@ app.set('view engine', 'ejs');
 
 // it will create session and save data on server
 app.use(expressSession({
+  cookie: { maxAge: 86400000 },
+  store: new MemoryStore({
+    checkPeriod: 86400000 // prune expired entries every 24h
+  }),
   resave: false,
-  saveUninitialized: false,
-  secret: "hello hello baaye baaye"
+  secret: 'keyboard cat'
 }))
 
 app.use(passport.initialize())
