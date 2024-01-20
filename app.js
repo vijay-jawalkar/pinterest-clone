@@ -16,7 +16,7 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-app.set('trust proxy', 1);
+
 
 // it will create session and save data on server
 app.use(expressSession({
