@@ -10,6 +10,7 @@ const nodemailer = require("nodemailer");
 
 const randomString = require("randomstring");
 const passwordResetModel = require("./passwordReset");
+require('dotenv').config();
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
@@ -153,8 +154,8 @@ router.post("/forgot-password", async function (req, res, next) {
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: "vijay.jawalkar.786@gmail.com",
-        pass: "ftug rtyf mnor osyd",
+        user: process.env.USER_EMAIL,
+        pass: process.env.USER_PASSWORD,
       },
     });
 
