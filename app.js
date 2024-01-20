@@ -26,6 +26,7 @@ app.use(expressSession({
     checkPeriod: 86400000 // prune expired entries every 24h
   }),
   resave: false,
+  saveUninitialized: false,
   secret: 'keyboard cat'
 }))
 
